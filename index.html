@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staple Foods Atlas · 主食图谱 — 9 Foods, 10 Dimensions</title>
+
+<meta name="description" content="A bilingual, data-driven comparison of the world's nine major staple foods — Rice, Wheat, Corn, Potatoes, Cassava, Oats, Barley, Sorghum, Sweet Potatoes — across nutrition, yield, water, carbon, geography, culture, economics, and the future of food. Side-by-side English + 中文 throughout.">
+<meta name="keywords" content="staple foods, rice, wheat, corn, potatoes, cassava, food security, agriculture, nutrition comparison, FAO, 主食, 大米, 小麦, 玉米, 土豆, 木薯">
+<meta name="author" content="Gewenbo">
+<link rel="canonical" href="https://staples.psyverse.fun/">
+<link rel="alternate" hreflang="en" href="https://staples.psyverse.fun/">
+<link rel="alternate" hreflang="zh-CN" href="https://staples.psyverse.fun/">
+<link rel="alternate" hreflang="x-default" href="https://staples.psyverse.fun/">
+<meta property="og:title" content="Staple Foods Atlas · 主食图谱">
+<meta property="og:description" content="9 staple foods, 10 dimensions, side-by-side bilingual. The data behind what feeds humanity.">
+<meta property="og:url" content="https://staples.psyverse.fun/">
+<meta property="og:site_name" content="Psyverse">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Staple Foods Atlas · 主食图谱">
+<meta name="twitter:description" content="A side-by-side bilingual comparison of the world's 9 major staple foods.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0e0a04">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"Staple Foods Atlas","description":"A bilingual data-driven comparison of the world's major staple foods.","url":"https://staples.psyverse.fun/","inLanguage":["en","zh-CN"],"author":{"@type":"Person","name":"Gewenbo","url":"https://psyverse.fun/"},"publisher":{"@type":"Organization","name":"Psyverse","url":"https://psyverse.fun/"}}
+</script>
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230e0a04'/><circle cx='10' cy='12' r='3' fill='%23d97706'/><circle cx='22' cy='12' r='3' fill='%23ca8a04'/><circle cx='10' cy='22' r='3' fill='%2365a30d'/><circle cx='22' cy='22' r='3' fill='%2392400e'/></svg>">
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0e0a04;
+  --bg-2: #1a130a;
+  --bg-3: #251c10;
+  --line: #2e2418;
+  --line-2: #3f3220;
+  --fg: #f5ecd9;
+  --fg-2: #c4b594;
+  --fg-3: #8a7a5a;
+  --amber: #d97706;
+  --amber-glow: #d9770644;
+  --gold: #ca8a04;
+  --green: #65a30d;
+  --brown: #92400e;
+  --rose: #be123c;
+  --shadow: rgba(0,0,0,.4);
+}
+body.light {
+  --bg: #faf3e0;
+  --bg-2: #f3ead0;
+  --bg-3: #ebe0bb;
+  --line: #d8c89e;
+  --line-2: #b8a878;
+  --fg: #1f1610;
+  --fg-2: #4a3825;
+  --fg-3: #8a7a5a;
+  --amber: #b45309;
+  --green: #4d7c0f;
+  --rose: #9f1239;
+  --shadow: rgba(0,0,0,.08);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Space Grotesk', 'Noto Sans SC', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  transition: background .3s, color .3s;
+}
+.mono { font-family: 'JetBrains Mono', monospace; }
+.serif { font-family: 'Cormorant Garamond', 'Noto Serif SC', serif; }
+
+body::after {
+  content: ''; position: fixed; inset: 0;
+  background:
+    radial-gradient(circle at 15% 0%, rgba(217,119,6,.07), transparent 50%),
+    radial-gradient(circle at 85% 100%, rgba(101,163,13,.05), transparent 60%);
+  pointer-events: none; z-index: 0;
+}
+
+/* Nav */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: 56px;
+  background: rgba(14,10,4,.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+  z-index: 100;
+  display: flex; align-items: center;
+  padding: 0 24px; gap: 14px;
+  transition: background .3s, border-color .3s;
+}
+body.light nav { background: rgba(250,243,224,.85); }
+nav .logo {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700; font-size: 12px;
+  display: flex; align-items: center; gap: 10px;
+  color: var(--fg); text-decoration: none;
+  letter-spacing: 0.06em;
+}
+nav .logo .glyph {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 2px; width: 22px; height: 22px;
+  flex-shrink: 0;
+}
+nav .logo .glyph span {
+  border-radius: 50%;
+  display: block;
+}
+nav .logo .glyph .a { background: var(--amber); }
+nav .logo .glyph .b { background: var(--gold); }
+nav .logo .glyph .c { background: var(--green); }
+nav .logo .glyph .d { background: var(--brown); }
+nav .links {
+  display: flex; gap: 14px;
+  margin-left: auto;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+nav .links a { color: var(--fg-2); text-decoration: none; transition: color .15s; }
+nav .links a:hover { color: var(--amber); }
+nav button.ctl {
+  background: transparent; color: var(--fg-2);
+  border: 1px solid var(--line-2);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all .15s;
+}
+nav button.ctl:hover { color: var(--amber); border-color: var(--amber); }
+
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Hero */
+.hero { padding: 120px 0 60px; }
+.tag {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--amber);
+  border: 1px solid var(--line-2);
+  border-radius: 100px;
+  padding: 6px 14px;
+  margin-bottom: 28px;
+  letter-spacing: 0.04em;
+}
+.tag .dot {
+  width: 6px; height: 6px;
+  background: var(--amber);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--amber);
+}
+h1 {
+  font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
+  font-size: clamp(40px, 6.5vw, 72px);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.018em;
+  margin-bottom: 24px;
+}
+h1 .en { display: block; font-style: italic; }
+h1 .zh {
+  display: block;
+  font-family: 'Noto Serif SC', serif;
+  font-style: normal;
+  margin-top: 6px;
+  background: linear-gradient(135deg, var(--amber) 0%, var(--green) 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.lede-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  margin: 36px 0;
+  max-width: 920px;
+}
+@media (max-width: 720px) { .lede-pair { grid-template-columns: 1fr; gap: 16px; } }
+.lede-pair .l-en, .lede-pair .l-zh {
+  font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
+  font-size: clamp(15px, 1.4vw, 18px);
+  line-height: 1.65;
+  color: var(--fg-2);
+  font-style: italic;
+}
+.lede-pair .l-zh {
+  font-family: 'Noto Serif SC', serif;
+  font-style: normal;
+}
+.lede-pair .l-en::before, .lede-pair .l-zh::before {
+  content: ''; display: block;
+  width: 24px; height: 1px;
+  background: var(--amber);
+  margin-bottom: 14px;
+}
+
+/* 9 staple intro pills */
+.staples-intro {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+  margin: 40px 0 50px;
+}
+.spill {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 18px 16px;
+  text-align: center;
+  transition: all .2s;
+}
+.spill:hover { transform: translateY(-2px); border-color: var(--amber); }
+.spill .em {
+  font-size: 28px;
+  margin-bottom: 8px;
+  display: block;
+}
+.spill .nm-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 16px;
+  color: var(--fg);
+  font-weight: 500;
+  line-height: 1.1;
+}
+.spill .nm-zh {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px;
+  color: var(--fg-2);
+  margin-top: 2px;
+}
+.spill .latin {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 11px;
+  color: var(--fg-3);
+  margin-top: 4px;
+}
+
+.meta-row {
+  display: flex; gap: 20px; flex-wrap: wrap;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--fg-3);
+  margin: 16px 0 0;
+}
+.meta-row b { color: var(--amber); font-weight: 500; }
+
+/* Section */
+section.chap {
+  padding: 80px 0;
+  border-top: 1px solid var(--line);
+  position: relative;
+  z-index: 1;
+}
+.chap-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--amber);
+  letter-spacing: 0.14em;
+  margin-bottom: 14px;
+  display: flex; align-items: center; gap: 12px;
+}
+.chap-num::before {
+  content: ''; width: 32px; height: 1px;
+  background: var(--amber);
+}
+.chap h2 {
+  font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
+  font-size: clamp(28px, 3.6vw, 44px);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+  line-height: 1.05;
+  font-style: italic;
+}
+.chap h2 .zh {
+  display: block;
+  font-family: 'Noto Serif SC', serif;
+  font-style: normal;
+  font-size: 0.62em;
+  color: var(--fg-2);
+  margin-top: 8px;
+  font-weight: 400;
+}
+
+/* Bilingual paragraph block */
+.bi {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin: 22px 0;
+  position: relative;
+  max-width: 980px;
+}
+.bi::before {
+  content: '';
+  position: absolute;
+  left: 50%; top: 0; bottom: 0;
+  width: 1px;
+  background: var(--line);
+  transform: translateX(-50%);
+}
+.bi .en, .bi .zh {
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--fg-2);
+}
+.bi .en {
+  font-family: 'Space Grotesk', sans-serif;
+  padding-right: 12px;
+}
+.bi .zh {
+  font-family: 'Noto Sans SC', sans-serif;
+  padding-left: 12px;
+}
+.bi .en strong, .bi .zh strong { color: var(--fg); font-weight: 600; }
+.bi .en em, .bi .zh em { color: var(--fg); font-style: italic; }
+@media (max-width: 720px) {
+  .bi { grid-template-columns: 1fr; gap: 12px; }
+  .bi::before { display: none; }
+  .bi .en { padding-right: 0; padding-bottom: 12px; border-bottom: 1px dashed var(--line); }
+  .bi .zh { padding-left: 0; }
+}
+
+/* Data tables */
+.tbl-wrap { overflow-x: auto; margin: 28px 0; }
+table.dt {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  min-width: 720px;
+}
+table.dt th, table.dt td {
+  text-align: right;
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+table.dt th {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--amber);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  border-bottom: 1px solid var(--amber);
+  background: var(--bg-2);
+  white-space: normal;
+  line-height: 1.35;
+}
+table.dt th.lab, table.dt td.lab {
+  text-align: left;
+  font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
+  font-style: italic;
+  color: var(--fg);
+  font-size: 15px;
+  white-space: nowrap;
+}
+table.dt td .zh-row {
+  display: block;
+  font-family: 'Noto Serif SC', sans-serif;
+  font-style: normal;
+  font-size: 11px;
+  color: var(--fg-3);
+  margin-top: 1px;
+  text-align: left;
+}
+table.dt td { color: var(--fg-2); font-family: 'JetBrains Mono', monospace; font-size: 12.5px; }
+table.dt td.hi-good { color: var(--green); font-weight: 600; }
+table.dt td.hi-bad  { color: var(--rose); font-weight: 600; }
+table.dt tr:hover { background: var(--bg-2); }
+table.dt th .zh { display: block; color: var(--fg-3); font-weight: 400; font-size: 9px; margin-top: 2px; letter-spacing: 0.04em; }
+
+/* Bar chart bars in cells */
+.bar-cell {
+  position: relative;
+  font-family: 'JetBrains Mono', monospace;
+  display: inline-block;
+  min-width: 60px;
+}
+.bar-fill {
+  position: absolute;
+  left: 0; bottom: -3px;
+  height: 2px;
+  background: var(--amber);
+  opacity: 0.5;
+  border-radius: 1px;
+}
+
+/* Cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+  margin: 28px 0;
+}
+.card {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 22px;
+  border-top: 3px solid var(--amber);
+  transition: all .2s;
+}
+.card:hover { transform: translateY(-2px); border-color: var(--line-2); }
+.card.green { border-top-color: var(--green); }
+.card.brown { border-top-color: var(--brown); }
+.card.gold { border-top-color: var(--gold); }
+.card.rose { border-top-color: var(--rose); }
+.card .lab {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--amber);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.card.green .lab { color: var(--green); }
+.card.brown .lab { color: var(--brown); }
+.card.gold  .lab { color: var(--gold); }
+.card.rose  .lab { color: var(--rose); }
+.card .nm-en {
+  font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
+  font-size: 22px;
+  font-style: italic;
+  color: var(--fg);
+  line-height: 1.1;
+  margin-bottom: 2px;
+}
+.card .nm-zh {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px;
+  color: var(--fg-2);
+  margin-bottom: 14px;
+}
+.card .desc-en, .card .desc-zh {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--fg-2);
+  margin-bottom: 12px;
+}
+.card .desc-en { font-family: 'Space Grotesk', sans-serif; padding-bottom: 12px; border-bottom: 1px dashed var(--line); }
+.card .desc-zh { font-family: 'Noto Sans SC', sans-serif; }
+
+/* Best-for ranking */
+.best {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 28px;
+  margin: 32px 0;
+}
+.best-tabs {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-bottom: 22px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+.best-tab {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  padding: 8px 14px;
+  border-radius: 100px;
+  background: transparent;
+  color: var(--fg-2);
+  border: 1px solid var(--line);
+  cursor: pointer;
+  transition: all .15s;
+  letter-spacing: 0.04em;
+}
+.best-tab:hover { color: var(--fg); }
+.best-tab.active {
+  color: var(--amber);
+  border-color: var(--amber);
+  background: rgba(217,119,6,.08);
+}
+.best-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+@media (max-width: 720px) { .best-list { grid-template-columns: 1fr; } }
+.best-list .b-en, .best-list .b-zh {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--fg-2);
+}
+.best-list .b-zh { font-family: 'Noto Sans SC', sans-serif; }
+.best-list ol {
+  list-style: none;
+  margin: 0;
+  counter-reset: r;
+}
+.best-list ol li {
+  counter-increment: r;
+  padding: 10px 0;
+  border-top: 1px dashed var(--line);
+  display: flex; gap: 12px;
+}
+.best-list ol li:first-child { border-top: none; }
+.best-list ol li::before {
+  content: counter(r, decimal-leading-zero);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--amber);
+  font-weight: 600;
+  flex-shrink: 0;
+  width: 24px;
+}
+.best-list ol li b { color: var(--fg); margin-right: 6px; font-weight: 600; }
+
+/* Country diet profiles */
+.country-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+  margin: 28px 0;
+}
+.country {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 22px;
+}
+.country .flag {
+  font-size: 28px;
+  margin-bottom: 6px;
+}
+.country .nm-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 20px;
+  color: var(--fg);
+  margin-bottom: 2px;
+}
+.country .nm-zh {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  color: var(--fg-2);
+  margin-bottom: 14px;
+}
+.country .stake {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--fg-2);
+  padding: 5px 0;
+}
+.country .stake .pct { color: var(--amber); font-weight: 600; min-width: 36px; }
+.country .stake .pbar {
+  flex: 1;
+  height: 4px;
+  background: var(--bg-3);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.country .stake .pbar .pf {
+  height: 100%;
+  background: var(--amber);
+  border-radius: 2px;
+}
+
+/* Insight */
+.insight {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--amber);
+  border-radius: 8px;
+  padding: 22px 24px;
+  margin: 28px 0;
+}
+.insight .lab {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--amber);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+}
+.insight .pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+@media (max-width: 720px) { .insight .pair { grid-template-columns: 1fr; gap: 14px; } }
+.insight .pair p {
+  font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
+  font-size: 17px;
+  color: var(--fg);
+  font-style: italic;
+  line-height: 1.55;
+  margin: 0;
+}
+.insight .pair p.zh {
+  font-family: 'Noto Serif SC', serif;
+  font-style: normal;
+}
+
+/* Footer */
+footer {
+  border-top: 1px solid var(--line);
+  padding: 56px 0 80px;
+  margin-top: 60px;
+  position: relative;
+  z-index: 1;
+}
+.foot-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 28px;
+}
+@media (max-width: 720px) { .foot-pair { grid-template-columns: 1fr; gap: 14px; } }
+.foot-pair p {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 16px;
+  color: var(--fg-2);
+  line-height: 1.6;
+}
+.foot-pair p.zh { font-family: 'Noto Serif SC', serif; font-style: normal; }
+.foot-bottom {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 12px;
+  color: var(--fg-3);
+  font-family: 'JetBrains Mono', monospace;
+}
+.foot-bottom a { color: var(--amber); text-decoration: none; }
+
+/* Reveal */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s, transform .6s; }
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 768px) {
+  nav .links { display: none; }
+  .hero { padding: 90px 0 40px; }
+  .staples-intro { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="#"><span class="glyph"><span class="a"></span><span class="b"></span><span class="c"></span><span class="d"></span></span> STAPLE FOODS · 主食图谱</a>
+  <div class="links">
+    <a href="#overview">01</a>
+    <a href="#nutrition">02</a>
+    <a href="#yield">03</a>
+    <a href="#environ">04</a>
+    <a href="#geo">05</a>
+    <a href="#culture">06</a>
+    <a href="#economic">07</a>
+    <a href="#future">10</a>
+    <a href="#best">★</a>
+  </div>
+  <button class="ctl" id="theme-btn" onclick="document.body.classList.toggle('light'); this.textContent=document.body.classList.contains('light')?'☾':'☀'">☀</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="tag"><span class="dot"></span> 9 STAPLES · 10 DIMENSIONS · 1 BILINGUAL ATLAS · 9 大主食 · 10 个维度</div>
+    <h1>
+      <span class="en">What feeds humanity.</span>
+      <span class="zh">喂养人类的，是这些。</span>
+    </h1>
+    <div class="lede-pair">
+      <div class="l-en">Three crops — rice, wheat, corn — supply over half of all human calories. Six more (potatoes, cassava, oats, barley, sorghum, sweet potatoes) carry most of the rest. This atlas compares them across nutrition, yield, water footprint, carbon, geography, culture, and economics — strictly side-by-side in English + 中文, drawn from FAO, USDA, and Our World in Data.</div>
+      <div class="l-zh">三种作物——大米、小麦、玉米——供应了人类卡路里的一半以上。另外六种（土豆、木薯、燕麦、大麦、高粱、红薯）承担了其余的大部分。本图谱从营养、产量、水足迹、碳排、地理、文化、经济等多维度对比它们——严格英汉并置，数据源自 FAO、USDA 与 Our World in Data。</div>
+    </div>
+
+    <div class="staples-intro">
+      <div class="spill"><span class="em">🍚</span><div class="nm-en"><em>Rice</em></div><div class="nm-zh">大米</div><div class="latin">Oryza sativa</div></div>
+      <div class="spill"><span class="em">🌾</span><div class="nm-en"><em>Wheat</em></div><div class="nm-zh">小麦</div><div class="latin">Triticum spp.</div></div>
+      <div class="spill"><span class="em">🌽</span><div class="nm-en"><em>Corn</em></div><div class="nm-zh">玉米</div><div class="latin">Zea mays</div></div>
+      <div class="spill"><span class="em">🥔</span><div class="nm-en"><em>Potato</em></div><div class="nm-zh">土豆</div><div class="latin">Solanum tuberosum</div></div>
+      <div class="spill"><span class="em">🍠</span><div class="nm-en"><em>Cassava</em></div><div class="nm-zh">木薯</div><div class="latin">Manihot esculenta</div></div>
+      <div class="spill"><span class="em">🥣</span><div class="nm-en"><em>Oats</em></div><div class="nm-zh">燕麦</div><div class="latin">Avena sativa</div></div>
+      <div class="spill"><span class="em">🌿</span><div class="nm-en"><em>Barley</em></div><div class="nm-zh">大麦</div><div class="latin">Hordeum vulgare</div></div>
+      <div class="spill"><span class="em">🌾</span><div class="nm-en"><em>Sorghum</em></div><div class="nm-zh">高粱</div><div class="latin">Sorghum bicolor</div></div>
+      <div class="spill"><span class="em">🍠</span><div class="nm-en"><em>Sweet Potato</em></div><div class="nm-zh">红薯</div><div class="latin">Ipomoea batatas</div></div>
+    </div>
+
+    <div class="meta-row">
+      <span>Compiled · <b>April 2026</b></span>
+      <span>Sections · <b>10</b></span>
+      <span>Staples · <b>9</b></span>
+      <span>Sources · <b>FAO · USDA · OWID</b></span>
+    </div>
+  </div>
+</section>
+
+<!-- 1 OVERVIEW -->
+<section class="chap reveal" id="overview">
+  <div class="container">
+    <div class="chap-num">01 · OVERVIEW</div>
+    <h2>The crops that built civilization <span class="zh">建造文明的作物</span></h2>
+    <div class="bi">
+      <div class="en">A "staple food" is one that supplies a major share of a population's daily calories — typically &gt;15% of intake — for sustained periods. Almost every civilization has been built on a small number of them: <strong>three grains and four roots</strong> dominate the planet, joined by oats and barley in temperate-cool climates.</div>
+      <div class="zh">「主食」是指在长时间内为某地人口提供大部分日常卡路里——通常 &gt;15%——的食物。几乎每一个文明都是靠少数几种主食建立的：<strong>三种谷物与四种根茎</strong>主导地球，温带与寒带还有燕麦与大麦加入。</div>
+    </div>
+    <div class="bi">
+      <div class="en">Agriculture was independently invented at least <strong>seven times</strong> in human history — in the Fertile Crescent (~10,000 BCE: wheat, barley), China's Yangtze (~9,000 BCE: rice), Mesoamerica (~8,000 BCE: maize), the Andes (~8,000 BCE: potato), New Guinea (~7,000 BCE: sugarcane, banana), West Africa (~3,000 BCE: sorghum, yam), and Eastern North America (~3,000 BCE). The crops chosen at each origin still dominate that region today.</div>
+      <div class="zh">农业在人类史上至少被<strong>独立发明 7 次</strong>——肥沃新月（约公元前 10,000 年：小麦、大麦）、中国长江流域（约前 9,000 年：稻）、中美洲（约前 8,000 年：玉米）、安第斯山脉（约前 8,000 年：土豆）、新几内亚（约前 7,000 年：甘蔗、香蕉）、西非（约前 3,000 年：高粱、薯蓣）、北美东部（约前 3,000 年）。每个起源地选定的作物，至今仍主导该地区。</div>
+    </div>
+    <div class="insight">
+      <div class="lab">Surprising · 意外</div>
+      <div class="pair">
+        <p>Rice + wheat + corn alone deliver ~50% of all calories consumed by humans on Earth. Add potatoes and cassava and you cross 60%. Nine plants feed 8 billion people.</p>
+        <p class="zh">仅大米 + 小麦 + 玉米就供应全球人类 ~50% 的卡路里。加上土豆与木薯，超过 60%。九种植物喂养着 80 亿人。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 NUTRITION -->
+<section class="chap reveal" id="nutrition">
+  <div class="container">
+    <div class="chap-num">02 · NUTRITION</div>
+    <h2>Per 100 g, raw <span class="zh">每 100 克生品</span></h2>
+    <div class="bi">
+      <div class="en">All values per 100g of raw, unprocessed grain or tuber. Cooked weights differ substantially (rice triples in mass; potatoes change little). Glycemic Index (GI) is approximate for the most-common cooked form.</div>
+      <div class="zh">数据为每 100 克生的、未加工谷物或块茎。烹熟后重量差异显著（大米三倍；土豆几乎不变）。血糖指数（GI）为最常见烹熟形式的近似值。</div>
+    </div>
+
+    <div class="tbl-wrap">
+      <table class="dt">
+        <thead>
+          <tr>
+            <th class="lab">Staple<span class="zh">主食</span></th>
+            <th>Calories<span class="zh">卡路里</span></th>
+            <th>Protein g<span class="zh">蛋白质</span></th>
+            <th>Carbs g<span class="zh">碳水</span></th>
+            <th>Fat g<span class="zh">脂肪</span></th>
+            <th>Fiber g<span class="zh">纤维</span></th>
+            <th>GI<span class="zh">血糖指数</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="lab">Rice (white)<span class="zh-row">大米（白）</span></td><td>365</td><td>7.1</td><td>80</td><td>0.7</td><td>1.3</td><td class="hi-bad">73</td></tr>
+          <tr><td class="lab">Wheat (whole)<span class="zh-row">小麦（全粒）</span></td><td>340</td><td class="hi-good">13.2</td><td>72</td><td>2.5</td><td>10.7</td><td>54</td></tr>
+          <tr><td class="lab">Corn (whole)<span class="zh-row">玉米（全粒）</span></td><td>365</td><td>9.4</td><td>74</td><td>4.7</td><td>7.3</td><td>52</td></tr>
+          <tr><td class="lab">Potato<span class="zh-row">土豆</span></td><td class="hi-good">77</td><td>2.0</td><td>17</td><td>0.1</td><td>2.2</td><td class="hi-bad">82</td></tr>
+          <tr><td class="lab">Cassava<span class="zh-row">木薯</span></td><td>160</td><td>1.4</td><td>38</td><td>0.3</td><td>1.8</td><td class="hi-good">46</td></tr>
+          <tr><td class="lab">Oats<span class="zh-row">燕麦</span></td><td>389</td><td class="hi-good">16.9</td><td>66</td><td class="hi-bad">6.9</td><td class="hi-good">10.6</td><td class="hi-good">55</td></tr>
+          <tr><td class="lab">Barley<span class="zh-row">大麦</span></td><td>354</td><td>12.5</td><td>73</td><td>2.3</td><td class="hi-good">17.3</td><td class="hi-good">28</td></tr>
+          <tr><td class="lab">Sorghum<span class="zh-row">高粱</span></td><td>339</td><td>11.3</td><td>75</td><td>3.3</td><td>6.3</td><td>70</td></tr>
+          <tr><td class="lab">Sweet Potato<span class="zh-row">红薯</span></td><td class="hi-good">86</td><td>1.6</td><td>20</td><td>0.1</td><td>3.0</td><td>70</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="insight">
+      <div class="lab">Reads from the table · 可由表读出</div>
+      <div class="pair">
+        <p>Barley wins fiber and glycemic-index. Oats win protein and beta-glucan. White rice is the lowest-fiber, highest-GI choice — fine in diverse diets, dangerous as the only carbohydrate. Potato delivers the most calories per dollar of any food on Earth.</p>
+        <p class="zh">大麦在纤维和血糖指数上胜出。燕麦在蛋白与 β-葡聚糖上胜出。白米饭是纤维最低、GI 最高的——多样化饮食中无碍，作为唯一碳水则危险。土豆是地球上每一美元能买到最多卡路里的食物。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 YIELD -->
+<section class="chap reveal" id="yield">
+  <div class="container">
+    <div class="chap-num">03 · YIELD &amp; EFFICIENCY</div>
+    <h2>Yield, water, fertilizer <span class="zh">产量 · 水 · 化肥</span></h2>
+    <div class="bi">
+      <div class="en">Yield is global average tonnes per hectare per year. Water is litres needed to produce 1 kg of food (rainfall + irrigation). Fertilizer is kg of nitrogen typically applied per hectare. These are global means — best-in-class operations beat them by 2-3×.</div>
+      <div class="zh">产量为全球年均每公顷吨数。水量为生产 1 千克食物所需升数（降水 + 灌溉）。化肥为典型每公顷施用氮肥千克数。皆为全球均值——一流耕作可达 2-3 倍。</div>
+    </div>
+
+    <div class="tbl-wrap">
+      <table class="dt">
+        <thead>
+          <tr>
+            <th class="lab">Staple<span class="zh">主食</span></th>
+            <th>Yield t/ha<span class="zh">产量</span></th>
+            <th>Water L/kg<span class="zh">水耗</span></th>
+            <th>Nitrogen kg/ha<span class="zh">氮肥</span></th>
+            <th>EROI<span class="zh">能源回报</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="lab">Rice (paddy)<span class="zh-row">水稻</span></td><td>4.7</td><td class="hi-bad">2,500</td><td class="hi-bad">120</td><td>4–6</td></tr>
+          <tr><td class="lab">Wheat<span class="zh-row">小麦</span></td><td>3.5</td><td>1,800</td><td>90</td><td>3–5</td></tr>
+          <tr><td class="lab">Corn<span class="zh-row">玉米</span></td><td>5.9</td><td>1,200</td><td class="hi-bad">155</td><td>4–7</td></tr>
+          <tr><td class="lab">Potato<span class="zh-row">土豆</span></td><td class="hi-good">21</td><td class="hi-good">290</td><td>110</td><td class="hi-good">7–10</td></tr>
+          <tr><td class="lab">Cassava<span class="zh-row">木薯</span></td><td>11</td><td>560</td><td class="hi-good">25</td><td>10–15</td></tr>
+          <tr><td class="lab">Oats<span class="zh-row">燕麦</span></td><td>2.5</td><td>2,400</td><td>60</td><td>3–4</td></tr>
+          <tr><td class="lab">Barley<span class="zh-row">大麦</span></td><td>3.0</td><td>1,400</td><td>70</td><td>3–5</td></tr>
+          <tr><td class="lab">Sorghum<span class="zh-row">高粱</span></td><td>1.4</td><td>2,800</td><td class="hi-good">35</td><td>5–8</td></tr>
+          <tr><td class="lab">Sweet Potato<span class="zh-row">红薯</span></td><td>13</td><td>380</td><td>50</td><td class="hi-good">8–12</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="insight">
+      <div class="lab">Reads from the table · 可由表读出</div>
+      <div class="pair">
+        <p>Tubers (potato, cassava, sweet potato) destroy grains on calories-per-hectare and calories-per-litre-of-water. Sorghum needs the least nitrogen — its drought tolerance is why it dominates semi-arid Africa. Rice is the least water-efficient by a wide margin, due to flooded paddy cultivation.</p>
+        <p class="zh">块茎（土豆、木薯、红薯）在「每公顷卡路里」与「每升水卡路里」上完胜谷物。高粱所需氮肥最少——其耐旱性正是它主宰半干旱非洲的原因。水稻因水田灌溉，水利用效率远不如其他主食。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 ENVIRONMENT -->
+<section class="chap reveal" id="environ">
+  <div class="container">
+    <div class="chap-num">04 · ENVIRONMENT</div>
+    <h2>Carbon, land, water <span class="zh">碳 · 土地 · 水</span></h2>
+
+    <div class="tbl-wrap">
+      <table class="dt">
+        <thead>
+          <tr>
+            <th class="lab">Staple<span class="zh">主食</span></th>
+            <th>CO₂e kg/kg<span class="zh">碳排</span></th>
+            <th>Land m²/kg<span class="zh">土地</span></th>
+            <th>Water L/kg<span class="zh">水</span></th>
+            <th>Methane<span class="zh">甲烷</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="lab">Rice<span class="zh-row">大米</span></td><td class="hi-bad">4.0</td><td>2.8</td><td>2,500</td><td class="hi-bad">High</td></tr>
+          <tr><td class="lab">Wheat<span class="zh-row">小麦</span></td><td>1.4</td><td>3.9</td><td>1,800</td><td>None</td></tr>
+          <tr><td class="lab">Corn<span class="zh-row">玉米</span></td><td>1.0</td><td>2.0</td><td>1,200</td><td>None</td></tr>
+          <tr><td class="lab">Potato<span class="zh-row">土豆</span></td><td class="hi-good">0.46</td><td class="hi-good">0.9</td><td class="hi-good">290</td><td>None</td></tr>
+          <tr><td class="lab">Cassava<span class="zh-row">木薯</span></td><td class="hi-good">0.40</td><td>1.8</td><td>560</td><td>None</td></tr>
+          <tr><td class="lab">Oats<span class="zh-row">燕麦</span></td><td>0.9</td><td>5.2</td><td>2,400</td><td>None</td></tr>
+          <tr><td class="lab">Barley<span class="zh-row">大麦</span></td><td>0.9</td><td>4.1</td><td>1,400</td><td>None</td></tr>
+          <tr><td class="lab">Sorghum<span class="zh-row">高粱</span></td><td class="hi-good">0.4</td><td>7.2</td><td>2,800</td><td>None</td></tr>
+          <tr><td class="lab">Sweet Potato<span class="zh-row">红薯</span></td><td class="hi-good">0.3</td><td class="hi-good">0.8</td><td>380</td><td>None</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="bi">
+      <div class="en">Rice carries the heaviest carbon footprint of any plant staple, almost entirely because flooded paddy fields are anaerobic environments where methane-producing bacteria thrive. Each kilogram of rice emits ~10× the methane of any other staple. Switching even part of paddy land to alternate-wetting-drying (AWD) cultivation could cut global agricultural methane by 5–10%.</div>
+      <div class="zh">水稻在所有植物主食中碳足迹最重，几乎完全因为水田为厌氧环境，使产甲烷菌繁殖。每千克稻米释放的甲烷约是其它主食的 10 倍。仅将部分稻田转为「干湿交替」（AWD）种植，就可削减全球农业甲烷排放 5-10%。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 GEOGRAPHY -->
+<section class="chap reveal" id="geo">
+  <div class="container">
+    <div class="chap-num">05 · CULTIVATION &amp; GEOGRAPHY</div>
+    <h2>Where they grow <span class="zh">它们生长的地方</span></h2>
+
+    <div class="cards">
+      <div class="card"><div class="lab">Rice</div><div class="nm-en"><em>Rice</em></div><div class="nm-zh">大米</div><div class="desc-en">Tropical and subtropical Asia: China + India together produce ~50% of global supply. Needs 1,000+ mm rainfall. Two harvests/year possible in tropics.</div><div class="desc-zh">热带与亚热带亚洲：中国+印度合计约占全球供应 50%。需 1,000+ mm 降水。热带可一年两收。</div></div>
+      <div class="card gold"><div class="lab">Wheat</div><div class="nm-en"><em>Wheat</em></div><div class="nm-zh">小麦</div><div class="desc-en">Temperate northern hemisphere — China, India, Russia, USA, EU. Needs cool growing season + dry harvest. Winter and spring varieties.</div><div class="desc-zh">温带北半球——中国、印度、俄罗斯、美国、欧盟。需冬凉夏燥。分冬麦与春麦。</div></div>
+      <div class="card gold"><div class="lab">Corn</div><div class="nm-en"><em>Corn</em></div><div class="nm-zh">玉米</div><div class="desc-en">Originated in Mexico. Now globally distributed; USA produces ~30% of global supply, China ~25%. Needs warm summers, deep soil.</div><div class="desc-zh">起源于墨西哥。今遍布全球；美国约占全球 30%，中国约 25%。需暖夏与深土。</div></div>
+      <div class="card brown"><div class="lab">Potato</div><div class="nm-en"><em>Potato</em></div><div class="nm-zh">土豆</div><div class="desc-en">Originated in the Andes (~7,000 BCE). Now ubiquitous — China is the world's largest producer. Adapts from sea level to 4,000m altitude.</div><div class="desc-zh">起源于安第斯山（约前 7,000 年）。今遍布全球——中国为最大生产国。适应海平面至 4,000 米高度。</div></div>
+      <div class="card brown"><div class="lab">Cassava</div><div class="nm-en"><em>Cassava</em></div><div class="nm-zh">木薯</div><div class="desc-en">Tropical Americas + Africa. Nigeria is #1 producer. Drought-tolerant, grows in poor soils. Stems can store in ground for years.</div><div class="desc-zh">热带美洲与非洲。尼日利亚为头号生产国。耐旱，可在贫瘠土壤生长。块茎可在土中储存数年。</div></div>
+      <div class="card green"><div class="lab">Oats</div><div class="nm-en"><em>Oats</em></div><div class="nm-zh">燕麦</div><div class="desc-en">Cool-temperate climates. Russia, Canada, Australia, EU lead production. Resilient on poor soils where wheat fails.</div><div class="desc-zh">凉温带气候。俄罗斯、加拿大、澳洲、欧盟产量领先。在小麦失败的贫瘠土壤上仍能成活。</div></div>
+      <div class="card green"><div class="lab">Barley</div><div class="nm-en"><em>Barley</em></div><div class="nm-zh">大麦</div><div class="desc-en">Among the most cold-tolerant crops — grown from Tibet to Scotland. Russia, Australia, Germany, France lead. ~70% goes to feed + brewing.</div><div class="desc-zh">最耐寒作物之一——西藏到苏格兰均有种植。俄、澳、德、法领先。约 70% 用于饲料与酿造。</div></div>
+      <div class="card brown"><div class="lab">Sorghum</div><div class="nm-en"><em>Sorghum</em></div><div class="nm-zh">高粱</div><div class="desc-en">Sub-Saharan Africa, India, USA. The most drought-tolerant cereal — survives 50°C and minimal rainfall. The hidden backbone of arid-zone food security.</div><div class="desc-zh">撒哈拉以南非洲、印度、美国。最耐旱的谷物——可承受 50°C 与极少降水。干旱地区粮食安全的隐藏支柱。</div></div>
+      <div class="card brown"><div class="lab">Sweet Potato</div><div class="nm-en"><em>Sweet Potato</em></div><div class="nm-zh">红薯</div><div class="desc-en">China produces ~50% of global supply. Originated in Central / South America. Highly nutritious; vitamin A from orange varieties saves lives in sub-Saharan Africa.</div><div class="desc-zh">中国占全球约 50%。起源于中南美洲。营养价值极高；橙色品种的维生素 A 拯救撒哈拉以南非洲的生命。</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 CULTURE -->
+<section class="chap reveal" id="culture">
+  <div class="container">
+    <div class="chap-num">06 · CULTURE</div>
+    <h2>The civilizations they built <span class="zh">它们造就的文明</span></h2>
+    <div class="bi">
+      <div class="en">Every staple comes with a civilization attached. Rice is China + South + Southeast Asia. Wheat is Europe + the Middle East. Corn is the Americas. Potato is the Andes (and later Ireland's collapse). Cassava is the Atlantic slave trade's surprise carry — exported from Brazil to West Africa, where it became indispensable. Sorghum is the African Sahel. The crop chose the culture as much as the culture chose the crop.</div>
+      <div class="zh">每一种主食都附带一个文明。大米是中国 + 南亚 + 东南亚。小麦是欧洲 + 中东。玉米是美洲。土豆是安第斯（以及后来爱尔兰的崩溃）。木薯是大西洋奴隶贸易意外的传播——从巴西输出至西非，成为不可或缺。高粱是非洲萨赫勒。作物选择了文化，正如文化选择了作物。</div>
+    </div>
+    <div class="bi">
+      <div class="en">Identity-defining dishes: rice → sushi, biryani, paella, dim sum, congee. Wheat → bread, pasta, dumplings (jiaozi), naan, croissant. Corn → tortilla, polenta, popcorn, masa, pozole. Potato → fries, gnocchi, latkes, vodka. Cassava → fufu, garri, tapioca, farinha. The map of human cuisine is, more than anything else, a map of these nine plants.</div>
+      <div class="zh">身份定义性的菜肴：大米 → 寿司、印度香饭、西班牙海鲜饭、点心、粥。小麦 → 面包、意面、饺子、馕、可颂。玉米 → 玉米饼、玉米糊、爆米花、马萨、玉米炖肉。土豆 → 薯条、马铃薯团子、薯饼、伏特加。木薯 → 富富、加里、木薯粉、巴西粉。人类饮食地图，归根到底，是这九种植物的地图。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 ECONOMIC -->
+<section class="chap reveal" id="economic">
+  <div class="container">
+    <div class="chap-num">07 · ECONOMICS</div>
+    <h2>Production, trade, and food security <span class="zh">生产 · 贸易 · 粮食安全</span></h2>
+
+    <div class="tbl-wrap">
+      <table class="dt">
+        <thead>
+          <tr>
+            <th class="lab">Staple<span class="zh">主食</span></th>
+            <th>Global Mt/yr<span class="zh">年产</span></th>
+            <th>% Traded<span class="zh">国际贸易占比</span></th>
+            <th>Top Producer<span class="zh">头号生产国</span></th>
+            <th>% of Global<span class="zh">占全球</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="lab">Rice<span class="zh-row">大米</span></td><td>~530</td><td>~9%</td><td>China · 中国</td><td>28%</td></tr>
+          <tr><td class="lab">Wheat<span class="zh-row">小麦</span></td><td class="hi-good">~800</td><td>~25%</td><td>China · 中国</td><td>17%</td></tr>
+          <tr><td class="lab">Corn<span class="zh-row">玉米</span></td><td class="hi-good">~1,200</td><td>~13%</td><td>USA · 美国</td><td>32%</td></tr>
+          <tr><td class="lab">Potato<span class="zh-row">土豆</span></td><td>~380</td><td>~3%</td><td>China · 中国</td><td>22%</td></tr>
+          <tr><td class="lab">Cassava<span class="zh-row">木薯</span></td><td>~290</td><td>~1%</td><td>Nigeria · 尼日利亚</td><td>21%</td></tr>
+          <tr><td class="lab">Oats<span class="zh-row">燕麦</span></td><td>~22</td><td>~12%</td><td>Russia · 俄罗斯</td><td>21%</td></tr>
+          <tr><td class="lab">Barley<span class="zh-row">大麦</span></td><td>~145</td><td>~22%</td><td>Russia · 俄罗斯</td><td>16%</td></tr>
+          <tr><td class="lab">Sorghum<span class="zh-row">高粱</span></td><td>~60</td><td>~11%</td><td>USA · 美国</td><td>15%</td></tr>
+          <tr><td class="lab">Sweet Potato<span class="zh-row">红薯</span></td><td>~90</td><td>~1%</td><td>China · 中国</td><td>50%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="bi">
+      <div class="en">Tubers (potato, cassava, sweet potato) are barely traded internationally — they're heavy, bulky, and perishable. They function as <em>local food security insurance</em>, not as global commodities. Wheat and corn are the most-traded by % — meaning global food-price shocks hit wheat- and corn-importing countries hardest. (Egypt imports 60% of its wheat. The 2022 Ukraine grain crisis hit Cairo before it hit Kyiv.)</div>
+      <div class="zh">块茎（土豆、木薯、红薯）几乎不进入国际贸易——重、大、易腐。它们作为<em>本地粮食安全保险</em>而非全球商品存在。小麦与玉米按占比是贸易最频的——意味着全球粮价冲击最先打击进口国。（埃及小麦进口率 60%。2022 年乌克兰粮食危机打击开罗早于打击基辅。）</div>
+    </div>
+
+    <h3 style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;margin:36px 0 14px;color:var(--fg);">Country Diet Profiles <span style="font-family:'Noto Serif SC',serif;font-style:normal;font-size:16px;color:var(--fg-2);margin-left:12px;font-weight:400;">国家饮食结构</span></h3>
+    <div class="bi">
+      <div class="en">Approximate share of dietary calories from each staple, by country. Sources: FAOSTAT food balance sheets, 2023.</div>
+      <div class="zh">各国从每种主食获取的卡路里近似占比。数据：FAOSTAT 食品平衡表（2023）。</div>
+    </div>
+
+    <div class="country-grid">
+      <div class="country">
+        <div class="flag">🇨🇳</div>
+        <div class="nm-en"><em>China</em></div>
+        <div class="nm-zh">中国</div>
+        <div class="stake"><span class="pct">26%</span><div class="pbar"><div class="pf" style="width:65%;background:var(--amber);"></div></div><span>Rice 大米</span></div>
+        <div class="stake"><span class="pct">19%</span><div class="pbar"><div class="pf" style="width:48%;background:var(--gold);"></div></div><span>Wheat 小麦</span></div>
+        <div class="stake"><span class="pct">8%</span><div class="pbar"><div class="pf" style="width:20%;background:var(--brown);"></div></div><span>Sweet Potato 红薯</span></div>
+      </div>
+      <div class="country">
+        <div class="flag">🇮🇳</div>
+        <div class="nm-en"><em>India</em></div>
+        <div class="nm-zh">印度</div>
+        <div class="stake"><span class="pct">29%</span><div class="pbar"><div class="pf" style="width:73%;background:var(--amber);"></div></div><span>Rice 大米</span></div>
+        <div class="stake"><span class="pct">19%</span><div class="pbar"><div class="pf" style="width:48%;background:var(--gold);"></div></div><span>Wheat 小麦</span></div>
+        <div class="stake"><span class="pct">3%</span><div class="pbar"><div class="pf" style="width:8%;background:var(--brown);"></div></div><span>Sorghum 高粱</span></div>
+      </div>
+      <div class="country">
+        <div class="flag">🇺🇸</div>
+        <div class="nm-en"><em>USA</em></div>
+        <div class="nm-zh">美国</div>
+        <div class="stake"><span class="pct">23%</span><div class="pbar"><div class="pf" style="width:58%;background:var(--gold);"></div></div><span>Wheat 小麦</span></div>
+        <div class="stake"><span class="pct">8%</span><div class="pbar"><div class="pf" style="width:20%;background:var(--gold);"></div></div><span>Corn 玉米</span></div>
+        <div class="stake"><span class="pct">3%</span><div class="pbar"><div class="pf" style="width:8%;background:var(--brown);"></div></div><span>Potato 土豆</span></div>
+      </div>
+      <div class="country">
+        <div class="flag">🇲🇽</div>
+        <div class="nm-en"><em>Mexico</em></div>
+        <div class="nm-zh">墨西哥</div>
+        <div class="stake"><span class="pct">38%</span><div class="pbar"><div class="pf" style="width:95%;background:var(--gold);"></div></div><span>Corn 玉米</span></div>
+        <div class="stake"><span class="pct">15%</span><div class="pbar"><div class="pf" style="width:38%;background:var(--gold);"></div></div><span>Wheat 小麦</span></div>
+        <div class="stake"><span class="pct">2%</span><div class="pbar"><div class="pf" style="width:5%;background:var(--amber);"></div></div><span>Rice 大米</span></div>
+      </div>
+      <div class="country">
+        <div class="flag">🇳🇬</div>
+        <div class="nm-en"><em>Nigeria</em></div>
+        <div class="nm-zh">尼日利亚</div>
+        <div class="stake"><span class="pct">25%</span><div class="pbar"><div class="pf" style="width:63%;background:var(--brown);"></div></div><span>Cassava 木薯</span></div>
+        <div class="stake"><span class="pct">14%</span><div class="pbar"><div class="pf" style="width:35%;background:var(--brown);"></div></div><span>Sorghum 高粱</span></div>
+        <div class="stake"><span class="pct">12%</span><div class="pbar"><div class="pf" style="width:30%;background:var(--gold);"></div></div><span>Corn 玉米</span></div>
+      </div>
+      <div class="country">
+        <div class="flag">🇪🇹</div>
+        <div class="nm-en"><em>Ethiopia</em></div>
+        <div class="nm-zh">埃塞俄比亚</div>
+        <div class="stake"><span class="pct">22%</span><div class="pbar"><div class="pf" style="width:55%;background:var(--brown);"></div></div><span>Sorghum 高粱</span></div>
+        <div class="stake"><span class="pct">17%</span><div class="pbar"><div class="pf" style="width:43%;background:var(--gold);"></div></div><span>Wheat 小麦</span></div>
+        <div class="stake"><span class="pct">15%</span><div class="pbar"><div class="pf" style="width:38%;background:var(--gold);"></div></div><span>Corn 玉米</span></div>
+      </div>
+      <div class="country">
+        <div class="flag">🇵🇪</div>
+        <div class="nm-en"><em>Peru</em></div>
+        <div class="nm-zh">秘鲁</div>
+        <div class="stake"><span class="pct">14%</span><div class="pbar"><div class="pf" style="width:35%;background:var(--brown);"></div></div><span>Potato 土豆</span></div>
+        <div class="stake"><span class="pct">12%</span><div class="pbar"><div class="pf" style="width:30%;background:var(--amber);"></div></div><span>Rice 大米</span></div>
+        <div class="stake"><span class="pct">10%</span><div class="pbar"><div class="pf" style="width:25%;background:var(--gold);"></div></div><span>Wheat 小麦</span></div>
+      </div>
+      <div class="country">
+        <div class="flag">🇷🇺</div>
+        <div class="nm-en"><em>Russia</em></div>
+        <div class="nm-zh">俄罗斯</div>
+        <div class="stake"><span class="pct">29%</span><div class="pbar"><div class="pf" style="width:73%;background:var(--gold);"></div></div><span>Wheat 小麦</span></div>
+        <div class="stake"><span class="pct">8%</span><div class="pbar"><div class="pf" style="width:20%;background:var(--brown);"></div></div><span>Potato 土豆</span></div>
+        <div class="stake"><span class="pct">3%</span><div class="pbar"><div class="pf" style="width:8%;background:var(--green);"></div></div><span>Barley 大麦</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 PROCESSING -->
+<section class="chap reveal" id="processing">
+  <div class="container">
+    <div class="chap-num">08 · PROCESSING</div>
+    <h2>From field to fork <span class="zh">从田间到餐桌</span></h2>
+    <div class="bi">
+      <div class="en">Roughly half of all corn produced in the USA goes to ethanol fuel; another quarter to livestock feed. Only ~10% goes to direct human food. Wheat is mostly milled to flour. Rice is mostly polished, removing the bran (and most of the fiber and B vitamins) for shelf life. Cassava must be soaked + pressed to remove cyanide before being safe to eat.</div>
+      <div class="zh">美国生产的玉米中约一半用于乙醇燃料；约四分之一用作牲畜饲料。仅约 10% 直接供人食用。小麦大多被磨成面粉。大米多被精米加工，去除糠层（与大部分纤维和 B 族维生素）以延长保质期。木薯须先经浸泡与压榨以去除氰化物，方可食用。</div>
+    </div>
+    <div class="bi">
+      <div class="en">The "industrial uses" line is enormous and underappreciated. Corn becomes ethanol, high-fructose corn syrup, plastic substitutes, animal feed, and even pharmaceutical scaffolding. Wheat starch goes into adhesives. Rice husks go into silica, building boards, and biochar. Almost no part of any modern staple is wasted at industrial scale.</div>
+      <div class="zh">「工业用途」一项巨大且常被低估。玉米变成乙醇、高果糖玉米糖浆、塑料替代品、动物饲料，甚至药用骨架材料。小麦淀粉用于粘合剂。稻壳变成硅、建材板、生物炭。在工业规模上，现代主食几乎没有任何部分被浪费。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 HEALTH -->
+<section class="chap reveal" id="health">
+  <div class="container">
+    <div class="chap-num">09 · HEALTH</div>
+    <h2>What a staple-based diet does to a body <span class="zh">以主食为基础的饮食对身体的影响</span></h2>
+    <div class="bi">
+      <div class="en">Rice-based diets correlate with lower obesity but higher Type-2 diabetes risk in populations consuming heavily polished white rice (China, India, Japan). Wheat-based diets cluster with cardiovascular outcomes that depend almost entirely on what comes <em>with</em> the wheat — Mediterranean (olive oil, fish, vegetables) is healthy; Western (white bread + processed meat) is not. Corn-based diets historically caused pellagra (niacin deficiency) until nixtamalization — soaking maize in lime — was introduced.</div>
+      <div class="zh">以米饭为基础的饮食在大量食用精米的人群中（中国、印度、日本）与较低肥胖率但较高的 2 型糖尿病风险相关。以小麦为基础的饮食的心血管后果几乎完全取决于「与小麦同食」之物——地中海饮食（橄榄油、鱼、蔬菜）健康；西式（白面包 + 加工肉）不健康。以玉米为主的饮食在引入「碱液处理」（用石灰浸泡玉米）之前曾引发糙皮病（烟酸缺乏）。</div>
+    </div>
+    <div class="bi">
+      <div class="en">The healthier general rule: <strong>diversify your staples</strong>. Cultures that historically ate only one staple were prone to deficiency disease (pellagra in corn-only diets, beriberi in white-rice-only diets). The healthiest modern diets — Mediterranean, Okinawan, Nordic — all include 3+ staples in regular rotation alongside vegetables, fish, and fermented foods.</div>
+      <div class="zh">较健康的一般规则：<strong>主食多样化</strong>。历史上只吃一种主食的文化易患缺乏病（仅食玉米致糙皮病、仅食精米致脚气病）。最健康的现代饮食模式——地中海、冲绳、北欧——皆在蔬菜、鱼类、发酵食品之外，定期轮换三种以上主食。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 FUTURE -->
+<section class="chap reveal" id="future">
+  <div class="container">
+    <div class="chap-num">10 · FUTURE</div>
+    <h2>What changes in the next 50 years <span class="zh">未来 50 年中变化的将是什么</span></h2>
+    <div class="cards">
+      <div class="card rose">
+        <div class="lab">Climate</div>
+        <div class="nm-en"><em>Heat-stress on rice + wheat</em></div>
+        <div class="nm-zh">水稻与小麦面临热应力</div>
+        <div class="desc-en">Each 1°C of warming reduces global wheat yields by ~6% and rice yields by ~3.2% (IPCC 6th Assessment). The northern margins (Russia, Canada) gain; the equatorial belt loses.</div>
+        <div class="desc-zh">每升温 1°C，全球小麦产量减约 6%，水稻减约 3.2%（IPCC 第六次评估）。北方边缘（俄、加）获益；赤道带损失。</div>
+      </div>
+      <div class="card green">
+        <div class="lab">Drought-resilient</div>
+        <div class="nm-en"><em>Sorghum + cassava rising</em></div>
+        <div class="nm-zh">高粱与木薯崛起</div>
+        <div class="desc-en">As irrigation becomes expensive, the "African crops" — sorghum, millet, cassava — become globally important. Expect them to expand into the Mediterranean, Australia, and the American Southwest.</div>
+        <div class="desc-zh">随着灌溉成本上升，「非洲作物」——高粱、小米、木薯——将变得全球重要。预计它们将扩展至地中海、澳洲与美国西南部。</div>
+      </div>
+      <div class="card brown">
+        <div class="lab">GMO</div>
+        <div class="nm-en"><em>CRISPR staples</em></div>
+        <div class="nm-zh">CRISPR 主食</div>
+        <div class="desc-en">Golden Rice (vitamin A enhanced) approved in the Philippines 2021. CRISPR wheat and corn already in field trials. Drought-tolerant maize approved in Kenya 2023. The technology is mature; deployment is political.</div>
+        <div class="desc-zh">黄金大米（强化维生素 A）于 2021 年在菲律宾批准。CRISPR 小麦与玉米已进入田间试验。耐旱玉米于 2023 年在肯尼亚批准。技术已成熟；部署是政治问题。</div>
+      </div>
+      <div class="card gold">
+        <div class="lab">Lab</div>
+        <div class="nm-en"><em>Lab-grown alternatives</em></div>
+        <div class="nm-zh">实验室培育替代品</div>
+        <div class="desc-en">Precision-fermented proteins (Perfect Day, Solar Foods) target dairy + animal protein, not staple carbohydrate — for now. Energy-dense carbohydrates remain genuinely cheap to grow. Lab staples are not coming soon.</div>
+        <div class="desc-zh">精准发酵蛋白（Perfect Day、Solar Foods）瞄准乳制品与动物蛋白，目前不针对主食碳水。能量密集的碳水化合物仍然真正廉价可种。实验室主食不会近期到来。</div>
+      </div>
+      <div class="card">
+        <div class="lab">Sustainable</div>
+        <div class="nm-en"><em>Regenerative agriculture</em></div>
+        <div class="nm-zh">再生农业</div>
+        <div class="desc-en">Cover cropping, no-till, agroforestry. Currently ~5% of global cropland; could exceed 30% by 2050 if subsidies shift. The biggest open question is whether yields hold during transition years.</div>
+        <div class="desc-zh">覆盖作物、免耕、农林复合。目前约占全球耕地 5%；若补贴转向，2050 年可能超 30%。最大悬念是过渡期产量能否保持。</div>
+      </div>
+      <div class="card rose">
+        <div class="lab">Population</div>
+        <div class="nm-en"><em>Demand peaks ~2080</em></div>
+        <div class="nm-zh">需求约 2080 年见顶</div>
+        <div class="desc-en">Global population is now projected to peak ~2080 at ~10.4 billion (UN 2024). After that, total caloric demand stops growing. The challenge shifts from production to distribution — and from quantity to quality.</div>
+        <div class="desc-zh">全球人口预计约 2080 年在 ~104 亿见顶（联合国 2024）。此后总卡路里需求停止增长。挑战从生产转向分配——从数量转向质量。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEST FOR -->
+<section class="chap reveal" id="best">
+  <div class="container">
+    <div class="chap-num">★ · INTERACTIVE RANKER</div>
+    <h2>Best staple, depending on what you optimize for <span class="zh">视优化目标而定 · 最佳主食</span></h2>
+
+    <div class="best">
+      <div class="best-tabs" id="best-tabs">
+        <button class="best-tab active" data-key="health">Health · 健康</button>
+        <button class="best-tab" data-key="environ">Environment · 环境</button>
+        <button class="best-tab" data-key="water">Water-Efficient · 水效率</button>
+        <button class="best-tab" data-key="cost">Cost / Calorie · 性价比</button>
+        <button class="best-tab" data-key="climate">Climate-Resilient · 抗气候</button>
+      </div>
+      <div class="best-list" id="best-list"></div>
+    </div>
+
+    <div class="insight">
+      <div class="lab">Honest Caveat · 诚实警示</div>
+      <div class="pair">
+        <p>Ranking foods on a single axis is reductive. The healthiest diet is diverse, the lowest-carbon farm uses regenerative methods, and "best" depends on your bioregion. Use this ranker as a conversation starter, not a prescription.</p>
+        <p class="zh">以单一维度对食物排名是简化的。最健康的饮食是多样化的，最低碳的农场采用再生方法，「最佳」取决于你所在的生物区域。把此排名作为对话起点，而非处方。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-pair">
+      <p>An independent, bilingual data atlas of the nine plants that feed humanity. Sources: FAOSTAT, USDA Food Composition Database, Our World in Data (Hannah Ritchie), Poore &amp; Nemecek (2018) on environmental impacts, IPCC AR6.</p>
+      <p class="zh">关于喂养人类的九种植物的独立双语数据图谱。数据：FAOSTAT、USDA 食品成分数据库、Our World in Data（Hannah Ritchie）、Poore &amp; Nemecek（2018）环境影响研究、IPCC AR6。</p>
+    </div>
+    <div class="foot-bottom">
+      <span>Part of the <a href="https://psyverse.fun">Psyverse</a> portfolio · 收录于 Psyverse 作品集</span>
+      <span>Compiled April 2026 · 编纂于 2026 年 4 月</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://analytics-dashboard-two-blue.vercel.app/tracker.js" defer></script>
+<script>
+// Reveal on scroll
+(function () {
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.06 });
+  els.forEach((el) => io.observe(el));
+})();
+
+// Best-for ranker
+const RANKINGS = {
+  health: {
+    en: [
+      { rank: "Barley", reason: "Highest fiber (17.3 g/100g) + lowest GI (28). Beta-glucans lower cholesterol." },
+      { rank: "Oats", reason: "Highest protein per gram (16.9 g/100g) + soluble fiber + complete amino-acid profile vs other grains." },
+      { rank: "Sweet Potato", reason: "Vitamin A (orange varieties), low calorie density, moderate GI, exceptional micronutrient breadth." },
+      { rank: "Whole Wheat", reason: "Strong protein and fiber when consumed as whole grain. Refined wheat ranks far worse." },
+      { rank: "Cassava", reason: "Lowest GI of all starches (46). Naturally gluten-free. Caveat: low protein, must be properly processed." },
+    ],
+    zh: [
+      { rank: "大麦", reason: "纤维最高（17.3 g/100g）+ 血糖指数最低（28）。β-葡聚糖可降胆固醇。" },
+      { rank: "燕麦", reason: "蛋白质密度最高（16.9 g/100g）+ 可溶性纤维 + 较其他谷物更完整的氨基酸谱。" },
+      { rank: "红薯", reason: "维生素 A（橙色品种）、低热量密度、中等 GI、微量营养素覆盖出色。" },
+      { rank: "全麦", reason: "整粒形式蛋白质和纤维都强。精制小麦排名远低于此。" },
+      { rank: "木薯", reason: "所有淀粉中 GI 最低（46）。天然无麸质。注意：蛋白低，须正确处理。" },
+    ],
+  },
+  environ: {
+    en: [
+      { rank: "Sweet Potato", reason: "Lowest carbon (0.3 kg CO₂e/kg), lowest land use (0.8 m²/kg). Climate champion of the staples." },
+      { rank: "Cassava", reason: "0.40 kg CO₂e/kg. Drought-tolerant, low-input. The Sahel's quiet hero." },
+      { rank: "Potato", reason: "0.46 kg CO₂e/kg, 0.9 m²/kg, only 290 L water/kg. The all-around winner." },
+      { rank: "Sorghum", reason: "0.4 kg CO₂e/kg. Lowest fertilizer needs of any cereal. Underrated globally." },
+      { rank: "Corn", reason: "1.0 kg CO₂e/kg. Highest yields per hectare among grains. Carbon cost mostly from fertilizer." },
+    ],
+    zh: [
+      { rank: "红薯", reason: "碳排最低（0.3 kg CO₂e/kg），土地最少（0.8 m²/kg）。主食中的气候冠军。" },
+      { rank: "木薯", reason: "0.40 kg CO₂e/kg。耐旱、低投入。萨赫勒地区无声的英雄。" },
+      { rank: "土豆", reason: "0.46 kg CO₂e/kg，0.9 m²/kg，仅 290 升水/kg。综合冠军。" },
+      { rank: "高粱", reason: "0.4 kg CO₂e/kg。化肥需求在所有谷物中最低。在全球被低估。" },
+      { rank: "玉米", reason: "1.0 kg CO₂e/kg。在谷物中每公顷产量最高。碳代价主要来自化肥。" },
+    ],
+  },
+  water: {
+    en: [
+      { rank: "Potato", reason: "290 L water/kg — by far the lowest. The reason it scaled so fast in 18th-century Europe." },
+      { rank: "Sweet Potato", reason: "380 L/kg. Comparable to potato; thrives in seasonal-rain climates." },
+      { rank: "Cassava", reason: "560 L/kg. Drought-tolerant, doesn't need irrigation in most growing regions." },
+      { rank: "Corn", reason: "1,200 L/kg. Best of the major grains, but still 4× the tubers." },
+      { rank: "Barley", reason: "1,400 L/kg. Most water-efficient cereal in temperate climates." },
+    ],
+    zh: [
+      { rank: "土豆", reason: "290 升水/kg——远低于其它。这正是它在 18 世纪欧洲迅速扩张的原因。" },
+      { rank: "红薯", reason: "380 升/kg。与土豆相当；在季节性降雨气候中表现出色。" },
+      { rank: "木薯", reason: "560 升/kg。耐旱，多数产区不需灌溉。" },
+      { rank: "玉米", reason: "1,200 升/kg。主要谷物中最佳，但仍是块茎的 4 倍。" },
+      { rank: "大麦", reason: "1,400 升/kg。温带气候中水效率最高的谷物。" },
+    ],
+  },
+  cost: {
+    en: [
+      { rank: "Potato", reason: "Highest yield/hectare (~21 t) + low input cost = lowest cost per calorie of any food on Earth." },
+      { rank: "Cassava", reason: "Grows on poor soils, almost no inputs. Cheapest source of calories in tropical Africa." },
+      { rank: "Sweet Potato", reason: "13 t/ha + dense calories + minimal water. Underused outside East Asia." },
+      { rank: "Corn", reason: "Highest yield among major grains (5.9 t/ha). Cheapest grain calorie globally." },
+      { rank: "Rice", reason: "4.7 t/ha + can be triple-cropped in tropics. Cheap calories where water is abundant." },
+    ],
+    zh: [
+      { rank: "土豆", reason: "最高产量/公顷（~21 吨）+ 低投入 = 地球上每卡路里最低成本食物。" },
+      { rank: "木薯", reason: "在贫瘠土壤生长，几乎无投入。热带非洲最便宜的卡路里来源。" },
+      { rank: "红薯", reason: "13 吨/公顷 + 卡路里密度高 + 用水极少。在东亚之外被低估。" },
+      { rank: "玉米", reason: "主要谷物中最高产（5.9 吨/公顷）。全球最便宜的谷物卡路里。" },
+      { rank: "大米", reason: "4.7 吨/公顷 + 热带可三作。水源充足处的廉价卡路里。" },
+    ],
+  },
+  climate: {
+    en: [
+      { rank: "Sorghum", reason: "Survives 50°C and minimal rainfall. The most heat- and drought-tolerant cereal." },
+      { rank: "Cassava", reason: "Tubers can stay in the ground for years. Drought-resilient. Africa's food-security insurance." },
+      { rank: "Sweet Potato", reason: "Tolerates heat, poor soils, irregular rainfall. The post-2050 staple expansion candidate." },
+      { rank: "Barley", reason: "Most cold-tolerant cereal. As northern latitudes warm, barley becomes the new wheat." },
+      { rank: "Rice (drought varieties)", reason: "New IRRI drought-tolerant strains (Sahbhagi, Dhan) yield 2-3 t/ha with 60% less water." },
+    ],
+    zh: [
+      { rank: "高粱", reason: "可承受 50°C 与极少降水。最耐热耐旱的谷物。" },
+      { rank: "木薯", reason: "块茎可在土中保存数年。耐旱。非洲粮食安全保险。" },
+      { rank: "红薯", reason: "耐热、耐贫瘠、耐降雨不规律。2050 年后主食扩张的候选者。" },
+      { rank: "大麦", reason: "最耐寒的谷物。随着高纬度变暖，大麦成为「新小麦」。" },
+      { rank: "水稻（耐旱品种）", reason: "国际水稻所新培育的耐旱品系（Sahbhagi、Dhan）以少 60% 的水产出 2-3 吨/公顷。" },
+    ],
+  },
+};
+
+function renderBest(key) {
+  const data = RANKINGS[key];
+  const list = document.getElementById('best-list');
+  list.innerHTML = `
+    <div class="b-en">
+      <ol>${data.en.map(d => `<li><div><b>${d.rank}</b>${d.reason}</div></li>`).join('')}</ol>
+    </div>
+    <div class="b-zh">
+      <ol>${data.zh.map(d => `<li><div><b>${d.rank}</b>${d.reason}</div></li>`).join('')}</ol>
+    </div>
+  `;
+}
+renderBest('health');
+document.querySelectorAll('.best-tab').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.best-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderBest(btn.dataset.key);
+  });
+});
+</script>
+</body>
+</html>
